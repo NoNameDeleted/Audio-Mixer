@@ -10,9 +10,21 @@ public class ButtonClickSound : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _clickSound;
 
+    private Button _button;
+
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(PlayClickSound);
+        _button = GetComponent<Button>(); //.onClick.AddListener(PlayClickSound);
+    }
+
+    private void OnEnable()
+    {
+        _button.onClick.AddListener(PlayClickSound);
+    }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveListener(PlayClickSound);
     }
 
     private void PlayClickSound()

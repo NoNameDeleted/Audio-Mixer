@@ -11,18 +11,20 @@ public class VolumeSetter : MonoBehaviour
     private readonly string SoundsVolume = nameof(SoundsVolume);
     private readonly string OverallVolume = nameof(OverallVolume);
 
+    private int _volumeScale = 20;
+
     public void SetMusicVolume(float soundLevel)
     {
-        _masterMixer.SetFloat(MusicVolume, Mathf.Log(soundLevel) * 20);
+        _masterMixer.SetFloat(MusicVolume, Mathf.Log(soundLevel) * _volumeScale);
     }
 
     public void SetSoundVolume(float soundLevel)
     {
-        _masterMixer.SetFloat(SoundsVolume, Mathf.Log(soundLevel) * 20);
+        _masterMixer.SetFloat(SoundsVolume, Mathf.Log(soundLevel) * _volumeScale);
     }
 
     public void SetOverallVolume(float soundLevel)
     {
-        _masterMixer.SetFloat(OverallVolume, Mathf.Log(soundLevel) * 20);
+        _masterMixer.SetFloat(OverallVolume, Mathf.Log(soundLevel) * _volumeScale);
     }
 }
